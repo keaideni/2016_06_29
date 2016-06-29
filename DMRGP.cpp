@@ -364,9 +364,13 @@ void DMRGP::truncUpdateP(const Parameter& para, int& OS, int& OE, int dir)
 void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
 {
 
-	int flag(0);
+	
 	para.read();
 	FEnergy = 10000000000;
+        for(int i = 0; i < 8; ++i)
+        {
+                para.D += 50;
+                int flag(0);
 	while (flag<para.SweepNo)
 	{
 
@@ -556,7 +560,7 @@ void DMRGP::SweepP(Parameter& para, int& OS, int& OE, int& dir)
                 << ",        MiuP = " << std::setprecision(15) << MiuP << ",    MiuN = " << std::setprecision(15) << MiuN << ",    trace = " << std::setprecision(15) << FTrace
                 << ",    truncerr = " << std::setprecision(15) << FTruncerr << "              para.D = "<<std::setprecision(15)<<para.D
                 <<"          Entanglment = "<<std::setprecision(15)<<FEntanglement<<std::endl;
-        
+        }
 }
 
 
