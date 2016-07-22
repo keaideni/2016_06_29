@@ -16,14 +16,16 @@ public:
 	SuperEnergy(Parameter&para,Super& sup)
 	{
 		wave = sup.Wave;
-		SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, 6);
+                int a(6);
+                if(sup.Dim < 6)a=2;
+		SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
 		eigs.init();
 		eigs.compute();
 		if (eigs.info() == SUCCESSFUL)
 		{
 			wave.f2Wave(eigs.eigenvectors(1));
 			para.Energy = eigs.eigenvalues()(0);
-			std::cout << eigs.num_iterations() << std::endl;
+			//std::cout << eigs.num_iterations() << std::endl;
 		}
 
 		
@@ -31,14 +33,16 @@ public:
         void init(Parameter&para,Super& sup)
         {
                 wave = sup.Wave;
-                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, 6);
+                int a(6);
+                if(sup.Dim < 6)a=2;
+                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init();
                 eigs.compute();
                 if (eigs.info() == SUCCESSFUL)
                 {
                         wave.f2Wave(eigs.eigenvectors(1));
                         para.Energy = eigs.eigenvalues()(0);
-                        std::cout << eigs.num_iterations() << std::endl;
+                        //std::cout << eigs.num_iterations() << std::endl;
                 }
 
                 
@@ -53,14 +57,16 @@ public:
                 double *pt = new double [sup.Dim];
                 for(int i = 0; i < sup.Dim; ++i)pt[i] = f.at(i);
                 
-                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, 6);
+                int a(6);
+                if(sup.Dim < 6)a=2;
+                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init(pt);
                 eigs.compute();
                 if (eigs.info() == SUCCESSFUL)
                 {
                         wave.f2Wave(eigs.eigenvectors(1));
                         para.Energy = eigs.eigenvalues()(0);
-                        std::cout << eigs.num_iterations() << std::endl;
+                        //std::cout << eigs.num_iterations() << std::endl;
                 }
 
                 
@@ -74,14 +80,16 @@ public:
                 double *pt = new double [sup.Dim];
                 for(int i = 0; i < sup.Dim; ++i)pt[i] = f.at(i);
                 
-                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, 6);
+                int a(6);
+                if(sup.Dim < 6)a=2;
+                SymEigsSolver<double, SMALLEST_ALGE, Super> eigs(&sup, 1, a);
                 eigs.init(pt);
                 eigs.compute();
                 if (eigs.info() == SUCCESSFUL)
                 {
                         wave.f2Wave(eigs.eigenvectors(1));
                         para.Energy = eigs.eigenvalues()(0);
-                        std::cout << eigs.num_iterations() << std::endl;
+                        //std::cout << eigs.num_iterations() << std::endl;
                 }
 
                 
